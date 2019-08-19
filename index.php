@@ -31,14 +31,17 @@ if(isset($_POST['login'])){
   // Jika email terdaftar 
   if($login){
     $email = $login['email'];
-    $password = $login['password'];
-
+    $password = $login['password'];    
     // Validasi info login
     if(password_verify($_POST['password'], $password)){
+      if($_POST['cek'] == 'on'){
+        $email = hash('ripemd160',$email);
+        setcookie('login',$email, time() + 86400);
+      }
       echo $success;
       $_SESSION['login'] = "true";
       header("Location:home.php");
-    } else {
+    } else { // jika password salah
       echo $failPass2;
     }
   } else { // jika email tidak terdaftar
