@@ -372,7 +372,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
+                  <th>Rendering enginer</th>
                   <th>Browser</th>
                   <th>Platform(s)</th>
                   <th>Engine version</th>
