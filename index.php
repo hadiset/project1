@@ -24,6 +24,10 @@ $failPass2 = "<div class='alert alert-danger alert-dismissible'>
             </div>";
 
 
+if(isset($_COOKIE['login']) || isset($_SESSION['login'])){
+  header("Location:home.php");
+}
+
 if(isset($_POST['login'])){
   // Inisiasi data user dari database
   $login = $db->loginUser($_POST);
