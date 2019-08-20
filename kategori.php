@@ -1,8 +1,6 @@
 <?php
   include "./functions/database.php";
   include "./functions/category.php";
-  include "header.php";
-  include "sidebar.php";
   
   $database = new database();
   $db = $database->getConnection();
@@ -19,6 +17,9 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+  <?php include "header.php";
+  include "sidebar.php";?>
+  
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -86,7 +87,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->  
+  <?php include "footer.php"; ?>      
 </div>
-<?php include "footer.php"; ?>      
+<?php include "script.php"; ?>      
 </body>
 </html>
