@@ -366,31 +366,23 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Product</h3>
-              <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create Product</button>
+              <h3 class="box-title">Category</h3>
+              <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create Category</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th width="15%">Product</th>
-                  <th width="10%">Price</th>
-                  <th width="50%">Description</th>
-                  <th width="10%">Category</th>
+                  <th width="25%">Name</th>
+                  <th width="60%">Description</th>                  
                   <th width="15%">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                  <td>
-                    <img src="./assets/img/nike.jpeg" alt="gambar-produk" srcset="" width=100 style="display:block;margin:auto">
-                    <p align="center">Nike Shirt</p>
-                  </td>
-                  <td>$10 US
-                  </td>
-                  <td>Cool shirt</td>
-                  <td> Shirt</td>
+                  <td>Shirt</td>
+                  <td>Anything of shirt</td>
                   <td>
                     <button type="button" class="btn btn-primary"><i class="fa fa-eye"></i> Read</button>
                     <button type="button" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
@@ -398,14 +390,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <img src="./assets/img/nike.jpeg" alt="gambar produk" srcset="" width=100 style="display:block;margin:auto">
-                    <p align="center">Nike Shirt</p>
-                  </td>
-                  <td>$10 US
-                  </td>
-                  <td>Cool shirt</td>
-                  <td> Shirt</td>
+                  <td>Shirt</td>
+                  <td>Anything of shirt</td>
                   <td>
                     <button type="button" class="btn btn-primary"><i class="fa fa-eye"></i> Read</button>
                     <button type="button" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
@@ -413,14 +399,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <img src="./assets/img/nike.jpeg" alt="gambar produk" srcset="" width=100 style="display:block;margin:auto">
-                    <p align="center">Nike Shirt</p>
-                  </td>
-                  <td>$10 US
-                  </td>
-                  <td>Cool shirt</td>
-                  <td> Shirt</td>
+                  <td>Shirt</td>
+                  <td>Anything of shirt</td>
                   <td>
                     <button type="button" class="btn btn-primary"><i class="fa fa-eye"></i> Read</button>
                     <button type="button" class="btn btn-info"><i class="fa fa-edit"></i> Edit</button>
@@ -430,10 +410,8 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th width="15%">Product</th>
-                  <th width="10%">Price</th>
-                  <th width="50%">Description</th>
-                  <th width="10%">Category</th>
+                  <th width="25%">Name</th>
+                  <th width="60%">Description</th>                  
                   <th width="15%">Actions</th>
                 </tr>
                 </tfoot>
