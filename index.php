@@ -1,9 +1,12 @@
 <?php
 
 include 'functions/database.php';
+include 'functions/user.php';
 
 session_start();
-$db = new database(); 
+$database = new database(); 
+$db = $database->getConnection();
+$datauser = new user($db);
 
 $success = "<div class='alert alert-success alert-dismissible'>
             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
@@ -30,7 +33,7 @@ if(isset($_COOKIE['login']) || isset($_SESSION['login'])){
 
 if(isset($_POST['login'])){
   // Inisiasi data user dari database
-  $login = $db->loginUser($_POST);
+  $login = $datauser->loginUser($_POST);
 
   // Jika email terdaftar 
   if($login){

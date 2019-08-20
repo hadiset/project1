@@ -1,8 +1,11 @@
 <?php 
 
 include './functions/database.php';
+include './functions/user.php';
 
-$db = new database(); 
+$database = new database();
+$db = $database->getConnection();
+$datauser = new user($db); 
     
 // $db->deleteUser();
 
@@ -23,7 +26,7 @@ if(isset($_POST['submit'])){
     echo $failPass;
   } else {
     echo $success;
-    $db->addUser($_POST);
+    $datauser->addUser($_POST);
     // header("Location:index.php");
   }
 }
