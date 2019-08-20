@@ -67,9 +67,9 @@
                   <td><?= $product['Description']; ?></td>
                   <td> <?= $product['CategoryName']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-primary" onclick="window.location.href = 'lihat_produk.php?=<?= $product['ProductID']; ?>'"><i class="fa fa-eye"></i> Read</button>
-                    <button type="button" class="btn btn-info"><i class="fa fa-edit" onclick="window.location.href = 'edit_produk.php?=<?= $product['ProductID']; ?>'"></i> Edit</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-trash" onclick="window.location.href = 'hapus_produk.php?=<?= $product['ProductID']; ?>'"></i> Delete</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"><i class="fa fa-eye"></i> Read</button>
+                    <button type="button" class="btn btn-info"><i class="fa fa-edit" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"></i> Edit</button>
+                    <button type="button" class="btn btn-danger"><i class="fa fa-trash" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"></i> Delete</button>
                   </td>
                 </tr>
                 <?php endforeach; ?>

@@ -29,16 +29,28 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>Store Data</span>
+          <a>
+            <i class="fa fa-table"></i> <span>Category</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="kategori.php"><i class="fa fa-list"></i> Category</a></li>
-            <li><a href="produk.php"><i class="fa fa-product-hunt"></i> Product</a></li>
+            <li><a href="./kategori.php"><i class="fa fa-list"></i> List of Category</a></li>
+            <li><a href="./tambah_kategori.php"><i class="fa fa-plus"></i> Add Category</a></li>
             <!-- <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li> -->
+          </ul>
+        </li>
+        <li class="treeview">
+          <a>
+            <i class="fa fa-product-hunt"></i> <span>Product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="./produk.php"><i class="fa fa-list"></i> List of Product</a></li>
+            <li><a href="./tambah_produk.php"><i class="fa fa-plus"></i> Add Product</a></li>
           </ul>
         </li>
       </ul>
