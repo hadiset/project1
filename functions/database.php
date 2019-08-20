@@ -8,7 +8,7 @@ class database{
     public $conn;
 
     // Create connection 
-    public function __construct(){
+    public function getConnection(){
         $this->conn = mysqli_connect($this->servername, $this->username, $this->password, $this->database);
 
         // Check connection
@@ -20,13 +20,13 @@ class database{
     }
 
     // Show Data
-    function showUser(){
-        $data = mysqli_query($this->conn, "SELECT * FROM `User`");
-        while($d = mysqli_fetch_assoc($data)){
-            $hasil[] = $d;
-        }
-        return $hasil;
-    }
+    // function showData($data){
+    //     $data = mysqli_query($this->conn, "SELECT * FROM `$data`");
+    //     while($d = mysqli_fetch_assoc($data)){
+    //         $hasil[] = $d;
+    //     }
+    //     return $hasil;
+    // }
 
     // Create Data
     function addUser($data){
@@ -98,9 +98,12 @@ class database{
         } else {
             return false;
         }
-        
     }
 }
+
+// $db = new database();
+
+// var_dump($db->showCategory());
 ?>
 
 
