@@ -17,8 +17,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include "header.php";
-  include "sidebar.php";?>
+  <?php include "./assets/page/header.php";
+  include "./assets/page/sidebar.php";?>
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -87,8 +87,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->  
-  <?php include "footer.php"; ?>      
+  <?php include "./assets/page/footer.php"; ?>      
 </div>
-<?php include "script.php"; ?>      
+<?php include "./assets/page/script.php"; ?>      
 </body>
 </html>

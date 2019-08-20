@@ -17,8 +17,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include "header.php";
-  include "sidebar.php";?>
+  <?php include "./assets/page/header.php";
+  include "./assets/page/sidebar.php";?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -65,7 +65,7 @@
                   <td><?= $product['Price']; ?>
                   </td>
                   <td><?= $product['Description']; ?></td>
-                  <td> <?= $product['CategoryID']; ?></td>
+                  <td> <?= $product['CategoryName']; ?></td>
                   <td>
                     <button type="button" class="btn btn-primary" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"><i class="fa fa-eye"></i> Read</button>
                     <button type="button" class="btn btn-info"><i class="fa fa-edit" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"></i> Edit</button>
@@ -96,8 +96,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->      
-  <?php include "footer.php"; ?> 
+  <?php include "./assets/page/footer.php"; ?> 
 </div>    
-<?php include "script.php"; ?> 
+<?php include "./assets/page/script.php"; ?> 
 </body>
 </html>
