@@ -48,6 +48,7 @@ class product{
         $tmp = $file["tmp_name"];
         $error = $file["error"];
         $size = $file["size"];
+        $imageOld = $data["imageOld"];
 
         // filter ukuran gambar maksimal 2MB
         if($size > 2000000){
@@ -59,15 +60,41 @@ class product{
         }
 
         //filter jenis file
-        $ekstensi = explode(".",$name);
-        $ekstensi = end($ekstensi);
-        if($ekstensi != "jpg" || $ekstensi != "jpeg" || $ekstensi != "png"){
-            echo "<script>
-            alert('Jenis file harus berupa jpg, jpeg, atau png!');
-            </script>";
-
-            return false;
+        if($name != ""){
+            $ekstensi = explode(".",$name);
+            $ekstensi = end($ekstensi);            
+            if($ekstensi !== "jpg" && $ekstensi !== "jpeg" && $ekstensi !== "png"){
+                echo "<script>
+                alert('Jenis file harus berupa jpg, jpeg, atau png!');
+                </script>";
+                
+                return false;
+            }
         }
+
+        //jika tidak ada gambar yg di upload
+        if($error == 4){
+            $image = $imageOld;
+        //jika ada gambar baru yg di upload
+        }else{
+            $ekstensi = explode(".",$name);
+            $ekstensi = strtolower(end($ekstensi)); 
+            $image = uniqid();
+            $image .= ".";
+            $image .= $ekstensi;
+            $dir = "/home/piconano/Documents/Project1/assets/img/";
+
+            if(!move_uploaded_file($tmp, $dir.$image)){
+                echo "<script>
+                alert('Upload gambar gagal!');
+                </script>";
+
+                return false;
+            }
+        }
+
+        
+        
 
         $product = htmlspecialchars(strip_tags($data["product"]));
         $price = htmlspecialchars(strip_tags($data["price"]));
@@ -77,7 +104,8 @@ class product{
         $sql = "UPDATE `$this->table_name` SET 
                 `Name` = '$product', 
                 `Price` = '$price', 
-                `Description` = '$description' 
+                `Description` = '$description',
+                `Image` = '$image'
                 WHERE `$this->table_name`.`ProductID` = $id";
 
         if(mysqli_query($this->conn,$sql)){

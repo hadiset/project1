@@ -101,8 +101,8 @@
                 <tr>
                   <th>Image</th>
                   <td>                    
-                    <img src="./assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto">
-                    <p style="text-align:center"><?= $produk["Image"] ?></p>
+                    <img src="./assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto">                    
+                    <input type="hidden" name="imageOld" id="imageOld" value="<?= $produk["Image"] ?>">
                     <input type="file" name="image" id="image" value="Choose File">
                     <span>(Max. 2MB)</span>
                   </td>
