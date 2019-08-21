@@ -42,6 +42,50 @@ class product{
             return false;
         }
     }
+
+    function edit($data,$file){
+        $name = $file["name"];
+        $tmp = $file["tmp_name"];
+        $error = $file["error"];
+        $size = $file["size"];
+
+        // filter ukuran gambar maksimal 2MB
+        if($size > 2000000){
+            echo "<script>
+            alert('Ukuran gambar terlalu besar!');
+            </script>";
+
+            return false;
+        }
+
+        //filter jenis file
+        $ekstensi = explode(".",$name);
+        $ekstensi = end($ekstensi);
+        if($ekstensi != "jpg" || $ekstensi != "jpeg" || $ekstensi != "png"){
+            echo "<script>
+            alert('Jenis file harus berupa jpg, jpeg, atau png!');
+            </script>";
+
+            return false;
+        }
+
+        $product = htmlspecialchars(strip_tags($data["product"]));
+        $price = htmlspecialchars(strip_tags($data["price"]));
+        $description = htmlspecialchars(strip_tags($data["description"]));
+        $id = $data["id"];
+
+        $sql = "UPDATE `$this->table_name` SET 
+                `Name` = '$product', 
+                `Price` = '$price', 
+                `Description` = '$description' 
+                WHERE `$this->table_name`.`ProductID` = $id";
+
+        if(mysqli_query($this->conn,$sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 
