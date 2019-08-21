@@ -43,7 +43,32 @@ class product{
         }
     }
 
-    function edit($data){
+    function edit($data,$file){
+        $name = $file["name"];
+        $tmp = $file["tmp_name"];
+        $error = $file["error"];
+        $size = $file["size"];
+
+        // filter ukuran gambar maksimal 2MB
+        if($size > 2000000){
+            echo "<script>
+            alert('Ukuran gambar terlalu besar!');
+            </script>";
+
+            return false;
+        }
+
+        //filter jenis file
+        $ekstensi = explode(".",$name);
+        $ekstensi = end($ekstensi);
+        if($ekstensi != "jpg" || $ekstensi != "jpeg" || $ekstensi != "png"){
+            echo "<script>
+            alert('Jenis file harus berupa jpg, jpeg, atau png!');
+            </script>";
+
+            return false;
+        }
+
         $product = htmlspecialchars(strip_tags($data["product"]));
         $price = htmlspecialchars(strip_tags($data["price"]));
         $description = htmlspecialchars(strip_tags($data["description"]));

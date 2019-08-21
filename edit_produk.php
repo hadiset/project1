@@ -2,7 +2,10 @@
 
   include "./functions/database.php";
   include "./functions/product.php";
-  
+
+  // var_dump($_FILES);
+  // die;
+
   $database = new database();
   $db = $database->getConnection();
   $dataproduk = new product($db);
@@ -16,7 +19,7 @@
 
   // Jika tombol Save ditekan
   if(isset($_POST['submit'])){
-    $produk = $dataproduk->edit($_POST);
+    $produk = $dataproduk->edit($_POST,$_FILES['image']);
     // Jika edit produk berhasil
     if($produk){
       $id = $_POST['id'];
@@ -26,6 +29,7 @@
       </script>";
     // Jika edit produk gagal
     }else{
+      $id = $_POST['id'];
       echo "<script>
       alert('Data gagal diedit');
       window.location.href = 'edit_produk.php?id=$id'; 
@@ -99,7 +103,8 @@
                   <td>                    
                     <img src="./assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto">
                     <p style="text-align:center"><?= $produk["Image"] ?></p>
-                    <input type="file" name="image" id="image" value="Choose File">                    
+                    <input type="file" name="image" id="image" value="Choose File">
+                    <span>(Max. 2MB)</span>
                   </td>
                   
                 </tr>                                
