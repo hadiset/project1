@@ -3,19 +3,36 @@
   include "./functions/database.php";
   include "./functions/product.php";
   
-  var_dump($_POST);
-  var_dump($_FILES);
-
   $database = new database();
   $db = $database->getConnection();
   $dataproduk = new product($db);
   
-
+  // Menampilkan data
   if(isset($_GET['id'])){
     $produk = $dataproduk->read($_GET['id']);    
   }else{
     header("Location: index.php");
   }
+
+  // Jika tombol Save ditekan
+  if(isset($_POST['submit'])){
+    $produk = $dataproduk->edit($_POST);
+    // Jika edit produk berhasil
+    if($produk){
+      $id = $_POST['id'];
+      echo "<script>
+      alert('Data berhasil diedit');
+      window.location.href = 'edit_produk.php?id=$id'; 
+      </script>";
+    // Jika edit produk gagal
+    }else{
+      echo "<script>
+      alert('Data gagal diedit');
+      window.location.href = 'edit_produk.php?id=$id'; 
+      </script>";
+    }
+  }
+
   
 ?>
 <!DOCTYPE html>
@@ -50,7 +67,7 @@
           <div class="box">
             <div class="box-header">      
               <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'produk.php'"><i class="fa fa-backward"></i> Back</button>              
-              <button type="submit" class="btn btn-info pull-right" onclick="window.location.href = 'edit_produk.php?id=1'"><i class="fa fa-edit"></i> Save Product</button>
+              <button type="submit" class="btn btn-info pull-right" name="submit"><i class="fa fa-edit"></i> Save Product</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -58,7 +75,10 @@
                 <tbody>
                 <tr>
                   <th>Product</th>
-                  <td><input type="text" class="form-control" name="product" id="product" value="<?= $produk["Name"] ?>"></td>
+                  <td>
+                    <input type="text" class="form-control" name="product" id="product" value="<?= $produk["Name"] ?>">
+                    <input type="hidden" name="id" id="id" value="<?= $produk["ProductID"] ?>">
+                  </td>
                 </tr>
                 <tr>
                   <th>Price</th>

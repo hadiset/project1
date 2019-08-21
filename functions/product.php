@@ -42,6 +42,25 @@ class product{
             return false;
         }
     }
+
+    function edit($data){
+        $product = htmlspecialchars(strip_tags($data["product"]));
+        $price = htmlspecialchars(strip_tags($data["price"]));
+        $description = htmlspecialchars(strip_tags($data["description"]));
+        $id = $data["id"];
+
+        $sql = "UPDATE `$this->table_name` SET 
+                `Name` = '$product', 
+                `Price` = '$price', 
+                `Description` = '$description' 
+                WHERE `$this->table_name`.`ProductID` = $id";
+
+        if(mysqli_query($this->conn,$sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 
