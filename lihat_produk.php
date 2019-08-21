@@ -3,12 +3,17 @@
   include "./functions/database.php";
   include "./functions/product.php";
   
-  
-
   $database = new database();
   $db = $database->getConnection();
   $dataproduk = new product($db);
-  $produk = $dataproduk->show();
+  
+
+  if(isset($_GET['id'])){
+    $produk = $dataproduk->read($_GET['id']);    
+  }else{
+    header("Location: index.php");
+  }
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,10 +44,10 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">List of Product</h3>
-              <button type="button" class="btn btn-danger pull-right" style="margin-left:10px;"><i class="fa fa-trash"></i> Hapus Product</button>
-              <button type="button" class="btn btn-info pull-right"><i class="fa fa-edit"></i> Edit Product</button>
+            <div class="box-header">      
+              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'produk.php'"><i class="fa fa-backward"></i> Back</button>
+              <button type="button" class="btn btn-danger pull-right" style="margin-left:10px;" onclick="remove(<?= $produk['ProductID'] ?>)"><i class="fa fa-trash"></i> Hapus Product</button>
+              <button type="button" class="btn btn-info pull-right" onclick="window.location.href = 'edit_produk.php?id=1'"><i class="fa fa-edit"></i> Edit Product</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -50,23 +55,23 @@
                 <tbody>
                 <tr>
                   <th>Product</th>
-                  <td>Adidas Human Race</td>
+                  <td><?= $produk["Name"] ?></td>
                 </tr>
                 <tr>
                   <th>Price</th>
-                  <td>25000</td>
+                  <td><?= $produk["Price"] ?></td>
                 </tr>
                 <tr>
                   <th>Description</th>
-                  <td>Adidas Human Race Shoes</td>
+                  <td><?= $produk["Description"] ?></td>
                 </tr>                
                 <tr>
                   <th>Category</th>
-                  <td>Shoes</td>
+                  <td><?= $produk["CategoryName"] ?></td>
                 </tr>                
                 <tr>
                   <th>Image</th>
-                  <td><img src="./assets/img/adidas-humanrace.jpeg" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto"></td>
+                  <td><img src="./assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto"></td>
                 </tr>                                
                 </tbody>                
               </table>
@@ -99,6 +104,15 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->    
+<!-- page script -->
+<script>
+  function remove($id){
+    $confirm = confirm("You will delete this data. Are you sure ?");
+
+    if($confirm){
+      window.location.href = "hapus_produk.php?id=" + $id;
+    }
+  }
+</script>    
 </body>
 </html>

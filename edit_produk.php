@@ -3,17 +3,25 @@
   include "./functions/database.php";
   include "./functions/product.php";
   
-  
+  var_dump($_POST);
+  var_dump($_FILES);
 
   $database = new database();
   $db = $database->getConnection();
   $dataproduk = new product($db);
-  $produk = $dataproduk->show();
+  
+
+  if(isset($_GET['id'])){
+    $produk = $dataproduk->read($_GET['id']);    
+  }else{
+    header("Location: index.php");
+  }
+  
 ?>
 <!DOCTYPE html>
 <html>
 <head>  
-  <title>Produk</title>
+  <title>Lihat Produk</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -24,8 +32,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Produk
-        <small>berbagai macam produk</small>
+        List of Product
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -38,55 +46,49 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
+          <form action="" method="post" enctype="multipart/form-data">
           <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Product</h3>
-              <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create Product</button>
+            <div class="box-header">      
+              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'produk.php'"><i class="fa fa-backward"></i> Back</button>              
+              <button type="submit" class="btn btn-info pull-right" onclick="window.location.href = 'edit_produk.php?id=1'"><i class="fa fa-edit"></i> Save Product</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th width="15%">Product</th>
-                  <th width="10%">Price</th>
-                  <th width="50%">Description</th>
-                  <th width="10%">Category</th>
-                  <th width="15%">Actions</th>
-                </tr>
-                </thead>
+              <table id="example1" class="table table-bordered table-striped">                
                 <tbody>
-                <?php foreach($produk as $product ) : ?>
                 <tr>
-                  <td>
-                    <img src="./assets/img/<?= $product['Image']; ?>" alt="gambar-produk" srcset="" width=100 style="display:block;margin:auto">
-                    <p align="center"><?= $product['Name']; ?></p>
-                  </td>
-                  <td><?= $product['Price']; ?>
-                  </td>
-                  <td><?= $product['Description']; ?></td>
-                  <td> <?= $product['CategoryName']; ?></td>
-                  <td>
-                    <button type="button" class="btn btn-primary" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"><i class="fa fa-eye"></i> Read</button>
-                    <button type="button" class="btn btn-info"><i class="fa fa-edit" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"></i> Edit</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-trash" onclick="window.location.href = '?=<?= $product['ProductID']; ?>'"></i> Delete</button>
-                  </td>
+                  <th>Product</th>
+                  <td><input type="text" class="form-control" name="product" id="product" value="<?= $produk["Name"] ?>"></td>
                 </tr>
-                <?php endforeach; ?>
-                </tbody>
-                <tfoot>
                 <tr>
-                  <th width="15%">Product</th>
-                  <th width="10%">Price</th>
-                  <th width="50%">Description</th>
-                  <th width="10%">Category</th>
-                  <th width="15%">Actions</th>
+                  <th>Price</th>
+                  <td><input type="text" class="form-control" name="price" id="price" value="<?= $produk["Price"] ?>"></td>
                 </tr>
-                </tfoot>
+                <tr>
+                  <th>Description</th>
+                  <td><input type="text" class="form-control" name="description" id="description" value="<?= $produk["Description"] ?>"></td>
+                </tr>                
+                <tr>
+                  <th>Category</th>
+                  <td><select name="category" class="form-control" id="category" disabled="disabled">
+                  <option value=""><?= $produk["CategoryName"] ?></option>
+                  </select></td>
+                </tr>                
+                <tr>
+                  <th>Image</th>
+                  <td>                    
+                    <img src="./assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto">
+                    <p style="text-align:center"><?= $produk["Image"] ?></p>
+                    <input type="file" name="image" id="image" value="Choose File">                    
+                  </td>
+                  
+                </tr>                                
+                </tbody>                
               </table>
             </div>
             <!-- /.box-body -->
           </div>
+          </form>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -97,7 +99,31 @@
   </div>
   <!-- /.content-wrapper -->      
   <?php include "./assets/page/footer.php"; ?> 
-</div>    
-<?php include "./assets/page/script.php"; ?> 
+</div>
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  function remove($id){
+    $confirm = confirm("You will delete this data. Are you sure ?");
+
+    if($confirm){
+      window.location.href = "hapus_produk.php?id=" + $id;
+    }
+  }
+</script>    
 </body>
 </html>

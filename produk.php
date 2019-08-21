@@ -67,9 +67,9 @@
                   <td><?= $product['Description']; ?></td>
                   <td> <?= $product['CategoryName']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-primary" onclick="window.location.href = 'lihat_produk.php?=<?= $product['ProductID']; ?>'"><i class="fa fa-eye"></i> Read</button>
-                    <button type="button" class="btn btn-info"><i class="fa fa-edit" onclick="window.location.href = 'edit_produk.php?=<?= $product['ProductID']; ?>'"></i> Edit</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-trash" onclick="window.location.href = 'hapus_produk.php?=<?= $product['ProductID']; ?>'"></i> Delete</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href = 'lihat_produk.php?id=<?= $product['ProductID']; ?>'"><i class="fa fa-eye"></i> Read</button>
+                    <button type="button" class="btn btn-info" onclick="window.location.href = 'edit_produk.php?id=<?= $product['ProductID']; ?>'"><i class="fa fa-edit"></i> Edit</button>
+                    <button type="button" class="btn btn-danger" onclick="remove(<?= $product['ProductID']; ?>)"><i class="fa fa-trash"></i> Delete</button>
                   </td>
                 </tr>
                 <?php endforeach; ?>
@@ -99,5 +99,14 @@
   <?php include "./assets/page/footer.php"; ?> 
 </div>    
 <?php include "./assets/page/script.php"; ?> 
+<script>
+  function remove($id){
+    $confirm = confirm("You will delete this data. Are you sure ?");
+
+    if($confirm){
+      window.location.href = "hapus_produk.php?id=" + $id;
+    }
+  }
+</script>
 </body>
 </html>
