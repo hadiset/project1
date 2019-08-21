@@ -3,4 +3,7 @@ FROM Product
 INNER JOIN Category ON Product.CategoryID = Category.CategoryID
 ORDER BY Product.ProductID;
 
-SELECT Product.*, Category.CategoryName FROM Product INNER JOIN Category ON Product.CategoryID = Category.CategoryID WHERE Product.ProductID = 1
+SELECT Product.*, Category.CategoryName 
+FROM Product 
+INNER JOIN Category ON Product.CategoryID = Category.CategoryID 
+WHERE Product.ProductID = 1;
