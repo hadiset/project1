@@ -1,24 +1,39 @@
 <?php
 
-  include "../functions/database.php";
-  include "../functions/product.php";
-  
-  $database = new database();
-  $db = $database->getConnection();
-  $dataproduk = new product($db);
-  
+  include "../functions/database.php";  
+  include "../functions/category.php";
 
-  if(isset($_GET['id'])){
-    $produk = $dataproduk->read($_GET['id']);    
-  }else{
-    header("Location: index.php");
+  // var_dump($_POST);
+  // die;
+
+  $database = new database();
+  $db = $database->getConnection();  
+  $datakategori = new category($db);
+    
+  // Jika tombol Save ditekan
+  if(isset($_POST['submit'])){
+    $kategori = $datakategori->tambah($_POST);
+    // Jika edit produk berhasil
+    if($kategori){      
+      echo "<script>
+      alert('Data berhasil ditambah');
+      window.location.href = 'kategori.php'; 
+      </script>";
+    // Jika edit produk gagal
+    }else{      
+      echo "<script>
+      event.preventDefault();
+      alert('Data gagal ditambah');      
+      </script>";
+    }
   }
+
   
 ?>
 <!DOCTYPE html>
 <html>
 <head>  
-  <title>Lihat Produk</title>
+  <title>Kategori | Tambah Kategori</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -29,7 +44,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        List of Product
+        List of Category
         <small></small>
       </h1>
       <ol class="breadcrumb">
@@ -43,41 +58,32 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
+          <form action="" method="post" enctype="multipart/form-data">
           <div class="box">
             <div class="box-header">      
-              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'produk.php'"><i class="fa fa-backward"></i> Back</button>
-              <button type="button" class="btn btn-danger pull-right" style="margin-left:10px;" onclick="remove(<?= $produk['ProductID'] ?>)"><i class="fa fa-trash"></i> Hapus Product</button>
-              <button type="button" class="btn btn-info pull-right" onclick="window.location.href = 'edit_produk.php?id=<?= $produk['ProductID'] ?>'"><i class="fa fa-edit"></i> Edit Product</button>
+              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'produk.php'"><i class="fa fa-backward"></i> Back</button>              
+              <button type="submit" class="btn btn-info pull-right" name="submit"><i class="fa fa-edit"></i> Save Product</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">                
                 <tbody>
                 <tr>
-                  <th>Product</th>
-                  <td><?= $produk["Name"] ?></td>
-                </tr>
-                <tr>
-                  <th>Price</th>
-                  <td><?= $produk["Price"] ?></td>
-                </tr>
+                  <th>Category Name</th>
+                  <td>
+                    <input type="text" class="form-control" name="category" id="category" required>                    
+                  </td>
+                </tr>                
                 <tr>
                   <th>Description</th>
-                  <td><?= $produk["Description"] ?></td>
-                </tr>                
-                <tr>
-                  <th>Category</th>
-                  <td><?= $produk["CategoryName"] ?></td>
-                </tr>                
-                <tr>
-                  <th>Image</th>
-                  <td><img src="../assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto"></td>
+                  <td><input type="text" class="form-control" name="description" id="description" required></td>
                 </tr>                                
                 </tbody>                
               </table>
             </div>
             <!-- /.box-body -->
           </div>
+          </form>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -105,14 +111,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-  function remove($id){
-    $confirm = confirm("You will delete this data. Are you sure ?");
-
-    if($confirm){
-      window.location.href = "hapus_produk.php?id=" + $id;
-    }
-  }
-</script>    
 </body>
 </html>

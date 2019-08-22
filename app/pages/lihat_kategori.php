@@ -1,15 +1,14 @@
 <?php
 
   include "../functions/database.php";
-  include "../functions/product.php";
+  include "../functions/category.php";
   
   $database = new database();
   $db = $database->getConnection();
-  $dataproduk = new product($db);
+  $datakategori = new category($db);
   
-
   if(isset($_GET['id'])){
-    $produk = $dataproduk->read($_GET['id']);    
+    $kategori = $datakategori->read($_GET['id']);    
   }else{
     header("Location: index.php");
   }
@@ -18,7 +17,7 @@
 <!DOCTYPE html>
 <html>
 <head>  
-  <title>Lihat Produk</title>
+  <title>Lihat Kategori</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -29,7 +28,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        List of Product
+        List of Cateogry
         <small></small>
       </h1>
       <ol class="breadcrumb">
@@ -45,34 +44,22 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">      
-              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'produk.php'"><i class="fa fa-backward"></i> Back</button>
-              <button type="button" class="btn btn-danger pull-right" style="margin-left:10px;" onclick="remove(<?= $produk['ProductID'] ?>)"><i class="fa fa-trash"></i> Hapus Product</button>
-              <button type="button" class="btn btn-info pull-right" onclick="window.location.href = 'edit_produk.php?id=<?= $produk['ProductID'] ?>'"><i class="fa fa-edit"></i> Edit Product</button>
+              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'kategori.php'"><i class="fa fa-backward"></i> Back</button>
+              <button type="button" class="btn btn-danger pull-right" style="margin-left:10px;" onclick="remove(<?= $kategori['CategoryID'] ?>)"><i class="fa fa-trash"></i> Remove Category</button>
+              <button type="button" class="btn btn-info pull-right" onclick="window.location.href = 'edit_kategori.php?id=<?= $kategori['CategoryID'] ?>'"><i class="fa fa-edit"></i> Edit Category</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">                
                 <tbody>
                 <tr>
-                  <th>Product</th>
-                  <td><?= $produk["Name"] ?></td>
-                </tr>
-                <tr>
-                  <th>Price</th>
-                  <td><?= $produk["Price"] ?></td>
+                  <th>Name</th>
+                  <td><?= $kategori["CategoryName"] ?></td>
                 </tr>
                 <tr>
                   <th>Description</th>
-                  <td><?= $produk["Description"] ?></td>
+                  <td><?= $kategori["Description"] ?></td>
                 </tr>                
-                <tr>
-                  <th>Category</th>
-                  <td><?= $produk["CategoryName"] ?></td>
-                </tr>                
-                <tr>
-                  <th>Image</th>
-                  <td><img src="../assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto"></td>
-                </tr>                                
                 </tbody>                
               </table>
             </div>
@@ -110,7 +97,7 @@
     $confirm = confirm("You will delete this data. Are you sure ?");
 
     if($confirm){
-      window.location.href = "hapus_produk.php?id=" + $id;
+      window.location.href = "hapus_kategori.php?id=" + $id;
     }
   }
 </script>    

@@ -1,18 +1,39 @@
 <?php
 
-  include "../functions/database.php";
-  include "../functions/product.php";
-  
-  $database = new database();
-  $db = $database->getConnection();
-  $dataproduk = new product($db);
-  
+  include "../functions/database.php";  
+  include "../functions/category.php";
 
+  $database = new database();
+  $db = $database->getConnection();  
+  $datakategori = new category($db);
+  
+  // Menampilkan data
   if(isset($_GET['id'])){
-    $produk = $dataproduk->read($_GET['id']);    
+    $kategori = $datakategori->read($_GET['id']);    
   }else{
     header("Location: index.php");
   }
+
+  // Jika tombol Save ditekan
+  if(isset($_POST['submit'])){
+    $kategori = $datakategori->edit($_POST);
+    // Jika edit produk berhasil
+    if($kategori){
+      $id = $_POST['id'];
+      echo "<script>
+      alert('Data berhasil diedit');
+      window.location.href = 'edit_kategori.php?id=$id'; 
+      </script>";
+    // Jika edit produk gagal
+    }else{
+      $id = $_POST['id'];
+      echo "<script>
+      alert('Data gagal diedit');
+      window.location.href = 'edit_kategori.php?id=$id'; 
+      </script>";
+    }
+  }
+
   
 ?>
 <!DOCTYPE html>
@@ -43,41 +64,33 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
+          <form action="" method="post">
           <div class="box">
             <div class="box-header">      
-              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'produk.php'"><i class="fa fa-backward"></i> Back</button>
-              <button type="button" class="btn btn-danger pull-right" style="margin-left:10px;" onclick="remove(<?= $produk['ProductID'] ?>)"><i class="fa fa-trash"></i> Hapus Product</button>
-              <button type="button" class="btn btn-info pull-right" onclick="window.location.href = 'edit_produk.php?id=<?= $produk['ProductID'] ?>'"><i class="fa fa-edit"></i> Edit Product</button>
+              <button type="button" class="btn btn-default" style="margin-left:10px;" onclick="window.location.href = 'kategori.php'"><i class="fa fa-backward"></i> Back</button>              
+              <button type="submit" class="btn btn-info pull-right" name="submit"><i class="fa fa-edit"></i> Save Product</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">                
                 <tbody>
                 <tr>
-                  <th>Product</th>
-                  <td><?= $produk["Name"] ?></td>
-                </tr>
-                <tr>
-                  <th>Price</th>
-                  <td><?= $produk["Price"] ?></td>
+                  <th>Name</th>
+                  <td>
+                    <input type="text" class="form-control" name="category" id="category" value="<?= $kategori["CategoryName"] ?>">
+                    <input type="hidden" name="id" id="id" value="<?= $kategori["CategoryID"] ?>">
+                  </td>
                 </tr>
                 <tr>
                   <th>Description</th>
-                  <td><?= $produk["Description"] ?></td>
-                </tr>                
-                <tr>
-                  <th>Category</th>
-                  <td><?= $produk["CategoryName"] ?></td>
-                </tr>                
-                <tr>
-                  <th>Image</th>
-                  <td><img src="../assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto"></td>
-                </tr>                                
+                  <td><input type="text" class="form-control" name="description" id="description" value="<?= $kategori["Description"] ?>"></td>
+                </tr>                                              
                 </tbody>                
               </table>
             </div>
             <!-- /.box-body -->
           </div>
+          </form>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -104,15 +117,6 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  function remove($id){
-    $confirm = confirm("You will delete this data. Are you sure ?");
-
-    if($confirm){
-      window.location.href = "hapus_produk.php?id=" + $id;
-    }
-  }
-</script>    
+<!-- page script -->    
 </body>
 </html>

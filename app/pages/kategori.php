@@ -42,7 +42,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Category</h3>
-              <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create Category</button>
+              <button type="button" class="btn btn-primary pull-right" onclick="window.location.href = 'tambah_kategori.php'"><i class="fa fa-plus"></i> Create Category</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -60,9 +60,9 @@
                   <td><?= $category['CategoryName']; ?></td>
                   <td><?= $category['Description']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-primary" onclick="window.location.href = '?=<?= $category['CategoryID']; ?>'"><i class="fa fa-eye"></i> Read</button>
-                    <button type="button" class="btn btn-info" onclick="window.location.href = '?=<?= $category['CategoryID']; ?>'"><i class="fa fa-edit"></i> Edit</button>
-                    <button type="button" class="btn btn-danger" onclick="window.location.href = '?=<?= $category['CategoryID']; ?>'"><i class="fa fa-trash"></i> Delete</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href = 'lihat_kategori.php?id=<?= $category['CategoryID']; ?>'"><i class="fa fa-eye"></i> Read</button>
+                    <button type="button" class="btn btn-info" onclick="window.location.href = 'edit_kategori.php?id=<?= $category['CategoryID']; ?>'"><i class="fa fa-edit"></i> Edit</button>
+                    <button type="button" class="btn btn-danger" onclick="window.location.href = 'hapus_kategori?id=<?= $category['CategoryID']; ?>'"><i class="fa fa-trash"></i> Delete</button>
                   </td>
                 </tr>
                 <?php endforeach; ?>
