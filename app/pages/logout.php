@@ -7,5 +7,5 @@ setcookie("login","", time() - 3600);
 session_unset();
 session_destroy();
 
-header("Location: index.php");
+header("Location: http://project1.id");
 ?>

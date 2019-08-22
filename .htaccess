@@ -1,7 +1,14 @@
 RewriteEngine on
+# Rwrite all URL with /app/pages
 RewriteCond %{REQUEST_URI} !^/app/pages
+
+# Rewrite all URL
 RewriteCond %{HTTP_HOST} ^(www\.)?project1\.
+
+# Rewrite all URL to this folder
 RewriteRule ^(.*)$ /app/pages/$1 [L]
+
+# Rewrite just root domain
 RewriteCond %{HTTP_HOST} project1\.id [NC]
 RewriteCond %{REQUEST_URI} ^/$
 RewriteRule ^(.*)$ /app/pages/$1 [L]

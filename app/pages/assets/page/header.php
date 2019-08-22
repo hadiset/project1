@@ -8,7 +8,7 @@
   if(!isset($_SESSION["login"])){
     echo "<script>
     alert('Anda harus login dulu untuk mengakses halaman ini');
-    window.location.href = 'index.php';
+    window.location.href = 'http://project1.id';
     </script>";  
   }
 ?>
