@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^/app/pages
+RewriteCond %{HTTP_HOST} ^(www\.)?project1\.
+RewriteRule ^(.*)$ /app/pages/$1 [L]
+RewriteCond %{HTTP_HOST} project1\.id [NC]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ /app/pages/$1 [L]
