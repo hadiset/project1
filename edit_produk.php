@@ -2,13 +2,15 @@
 
   include "./functions/database.php";
   include "./functions/product.php";
+  include "./functions/category.php";
 
-  // var_dump($_FILES);
+  // var_dump($_POST);
   // die;
 
   $database = new database();
   $db = $database->getConnection();
   $dataproduk = new product($db);
+  $datakategori = new category($db);
   
   // Menampilkan data
   if(isset($_GET['id'])){
@@ -94,8 +96,14 @@
                 </tr>                
                 <tr>
                   <th>Category</th>
-                  <td><select name="category" class="form-control" id="category" disabled="disabled">
-                  <option value=""><?= $produk["CategoryName"] ?></option>
+                  <td><select name="category" class="form-control" id="category" >                  
+                  <?php foreach($datakategori->show() as $category) : ?>
+                  <?php if($produk["CategoryID"] === $category["CategoryID"]) : ?>
+                    <option value="<?= $category["CategoryID"] ?>" selected><?= $category["CategoryName"] ?></option>
+                  <?php else : ?>
+                  <option value="<?= $category["CategoryID"] ?>"><?= $category["CategoryName"] ?></option>
+                  <?php endif; ?>                    
+                  <?php endforeach; ?>
                   </select></td>
                 </tr>                
                 <tr>

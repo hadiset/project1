@@ -82,7 +82,7 @@ class product{
             $image = uniqid();
             $image .= ".";
             $image .= $ekstensi;
-            $dir = "/home/piconano/Documents/Project1/assets/img/";
+            $dir = getcwd()."/assets/img/";
 
             if(!move_uploaded_file($tmp, $dir.$image)){
                 echo "<script>
@@ -99,13 +99,15 @@ class product{
         $product = htmlspecialchars(strip_tags($data["product"]));
         $price = htmlspecialchars(strip_tags($data["price"]));
         $description = htmlspecialchars(strip_tags($data["description"]));
+        $category = $data['category'];
         $id = $data["id"];
 
         $sql = "UPDATE `$this->table_name` SET 
                 `Name` = '$product', 
                 `Price` = '$price', 
                 `Description` = '$description',
-                `Image` = '$image'
+                `Image` = '$image',
+                `CategoryID` = '$category'
                 WHERE `$this->table_name`.`ProductID` = $id";
 
         if(mysqli_query($this->conn,$sql)){
