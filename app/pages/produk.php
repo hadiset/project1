@@ -17,8 +17,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include "../assets/page/header.php";
-  include "../assets/page/sidebar.php";?>
+  <?php include "./assets/page/header.php";
+  include "./assets/page/sidebar.php";?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -59,7 +59,7 @@
                 <?php foreach($produk as $product ) : ?>
                 <tr>
                   <td>
-                    <img src="../assets/img/<?= $product['Image']; ?>" alt="gambar-produk" srcset="" width=100 style="display:block;margin:auto">
+                    <img src="./assets/img/<?= $product['Image']; ?>" alt="gambar-produk" srcset="" width=100 style="display:block;margin:auto">
                     <p align="center"><?= $product['Name']; ?></p>
                   </td>
                   <td><?= $product['Price']; ?>
@@ -96,9 +96,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->      
-  <?php include "../assets/page/footer.php"; ?> 
+  <?php include "./assets/page/footer.php"; ?> 
 </div>    
-<?php include "../assets/page/script.php"; ?> 
+<?php include "./assets/page/script.php"; ?> 
 <script>
   function remove($id){
     $confirm = confirm("You will delete this data. Are you sure ?");

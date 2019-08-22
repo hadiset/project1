@@ -82,7 +82,7 @@ class product{
             $image = uniqid();
             $image .= ".";
             $image .= $ekstensi;
-            $dir = "../../assets/img/";
+            $dir = "../assets/img/";
 
             if(!move_uploaded_file($tmp, $dir.$image)){
                 echo "<script>
@@ -156,7 +156,7 @@ class product{
             $image = uniqid();
             $image .= ".";
             $image .= $ekstensi;
-            $dir = "../assets/img/";
+            $dir = "./assets/img/";
 
             if(!move_uploaded_file($tmp, $dir.$image)){
                 echo "<script>

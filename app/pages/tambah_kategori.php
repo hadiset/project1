@@ -37,8 +37,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include "../assets/page/header.php";
-  include "../assets/page/sidebar.php";?>
+  <?php include "./assets/page/header.php";
+  include "./assets/page/sidebar.php";?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -93,7 +93,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->      
-  <?php include "../assets/page/footer.php"; ?> 
+  <?php include "./assets/page/footer.php"; ?> 
 </div>
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
