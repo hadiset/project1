@@ -1,7 +1,7 @@
 <?php
 
-  include "./functions/database.php";
-  include "./functions/product.php";
+  include "../functions/database.php";
+  include "../functions/product.php";
   
   $database = new database();
   $db = $database->getConnection();

@@ -1,8 +1,8 @@
 <?php
 
-  include "./functions/database.php";
-  include "./functions/product.php";
-  include "./functions/category.php";
+  include "../functions/database.php";
+  include "../functions/product.php";
+  include "../functions/category.php";
 
   // var_dump($_POST);
   // die;
@@ -48,8 +48,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include "./assets/page/header.php";
-  include "./assets/page/sidebar.php";?>
+  <?php include "../assets/page/header.php";
+  include "../assets/page/sidebar.php";?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -109,7 +109,7 @@
                 <tr>
                   <th>Image</th>
                   <td>                    
-                    <img src="./assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto">                    
+                    <img src="../assets/img/<?= $produk["Image"] ?>" alt="gambar-produk" srcset="" width=300 style="display:block;margin:auto">                    
                     <input type="hidden" name="imageOld" id="imageOld" value="<?= $produk["Image"] ?>">
                     <input type="file" name="image" id="image" value="Choose File">
                     <span>(Max. 2MB)</span>
@@ -131,7 +131,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->      
-  <?php include "./assets/page/footer.php"; ?> 
+  <?php include "../assets/page/footer.php"; ?> 
 </div>
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
@@ -148,15 +148,6 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  function remove($id){
-    $confirm = confirm("You will delete this data. Are you sure ?");
-
-    if($confirm){
-      window.location.href = "hapus_produk.php?id=" + $id;
-    }
-  }
-</script>    
+<!-- page script -->    
 </body>
 </html>

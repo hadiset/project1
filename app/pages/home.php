@@ -56,8 +56,8 @@ if(!isset($_SESSION["login"])){
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <?php include './assets/page/header.php';?>
-  <?php include './assets/page/sidebar.php'; ?>
+  <?php include '../assets/page/header.php';?>
+  <?php include '../assets/page/sidebar.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -143,8 +143,8 @@ if(!isset($_SESSION["login"])){
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <?php include './assets/page/footer.php'; ?>
+  <?php include '../assets/page/footer.php'; ?>
 </div>
-  <?php include './assets/page/script.php'; ?>
+  <?php include '../assets/page/script.php'; ?>
 </body>
 </html>
