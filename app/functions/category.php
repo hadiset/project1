@@ -58,7 +58,7 @@ class category{
     function tambah($data){
         $category = htmlspecialchars(strip_tags($data["category"]));        
         $description = htmlspecialchars(strip_tags($data["description"]));        
-        $id = $data["id"];
+        
         
         $sql = "INSERT INTO `$this->table_name`
                 (`CategoryID`, `CategoryName`, `Description`)
