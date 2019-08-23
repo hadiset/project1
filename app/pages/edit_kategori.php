@@ -40,10 +40,11 @@
 <html>
 <head>  
   <title>Lihat Produk</title>
-  <?= include "./assets/page/header.php"; ?>
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+  <?php include "./assets/page/header.php"; ?>
   <?php include "./assets/page/sidebar.php";?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -83,7 +84,7 @@
                 </tr>
                 <tr>
                   <th>Description</th>
-                  <td><input type="text" class="form-control" name="description" id="description" value="<?= $kategori["Description"] ?>"></td>
+                  <td><textarea rows="3" class="form-control" name="description" id="description"><?= $kategori["Description"] ?></textarea></td>
                 </tr>                                              
                 </tbody>                
               </table>

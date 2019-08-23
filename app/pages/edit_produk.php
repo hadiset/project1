@@ -45,10 +45,11 @@
 <html>
 <head>  
   <title>Lihat Produk</title>
-  <?php include "./assets/page/header.php";?>
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+  <?php include "./assets/page/header.php";?>
   <?php include "./assets/page/sidebar.php";?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -92,7 +93,7 @@
                 </tr>
                 <tr>
                   <th>Description</th>
-                  <td><input type="text" class="form-control" name="description" id="description" value="<?= $produk["Description"] ?>"></td>
+                  <td><textarea rows="3" class="form-control" name="description" id="description" ><?= $produk["Description"] ?></textarea></td>
                 </tr>                
                 <tr>
                   <th>Category</th>

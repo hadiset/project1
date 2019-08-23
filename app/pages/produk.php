@@ -14,11 +14,12 @@
 <html>
 <head>  
   <title>Produk</title>
-  <?php include "./assets/page/header.php";?>
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-<?= include "./assets/page/sidebar.php"; ?>
+  <?php include "./assets/page/header.php";?>
+  <?php include "./assets/page/sidebar.php"; ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">    
     <!-- Content Header (Page header) -->

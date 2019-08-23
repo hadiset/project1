@@ -4,7 +4,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar" style="padding-top:3px;">
+  <aside class="main-sidebar" style="padding-top:5%;">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->

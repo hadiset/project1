@@ -62,8 +62,9 @@ class product{
         //filter jenis file
         if($name != ""){
             $ekstensi = explode(".",$name);
-            $ekstensi = end($ekstensi);            
-            if($ekstensi !== "jpg" && $ekstensi !== "jpeg" && $ekstensi !== "png"){
+            $ekstensi = end($ekstensi);
+            $mime = ["jpg","jpeg","png"];            
+            if(!in_array($ekstensi, $mime)){
                 echo "<script>
                 alert('Jenis file harus berupa jpg, jpeg, atau png!');
                 </script>";
@@ -136,8 +137,9 @@ class product{
         //filter jenis file
         if($name != ""){
             $ekstensi = explode(".",$name);
-            $ekstensi = end($ekstensi);            
-            if($ekstensi !== "jpg" && $ekstensi !== "jpeg" && $ekstensi !== "png"){
+            $ekstensi = end($ekstensi);     
+            $mime = ["jpg","jpeg","png"];            
+            if(!in_array($ekstensi, $mime)){
                 echo "<script>
                 alert('Jenis file harus berupa jpg, jpeg, atau png!');
                 </script>";
