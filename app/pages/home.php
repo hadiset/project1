@@ -16,11 +16,12 @@ $kategori = $datakategori->show();
 <html>
 <head>  
   <title>Project 1 | Dashboard</title>  
+  <?php include './assets/page/header.php';?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <?php include './assets/page/header.php';?>
+  
   <?php include './assets/page/sidebar.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
