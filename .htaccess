@@ -13,8 +13,8 @@
 
     # Try to remove .php
     # RewriteCond %{REQUEST_FILENAME} !-f
-    # RewriteRule ^([a-z]+)\/?$ $1.php [NC]
-     RewriteRule ^([^\.]+)$ $1.php [NC,L]
+     RewriteRule ^([a-z]+)\/?$ $1.php [NC]
+    
     
     # Rewrite just root domain
      RewriteCond %{HTTP_HOST} project1\.id [NC]
