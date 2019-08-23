@@ -1,0 +1,35 @@
+<IfModule mod_rewrite.c>    
+     RewriteEngine on
+    
+    # Rewrite all URL with /app/pages
+     RewriteCond %{REQUEST_URI} !^/app/pages
+
+    # Rewrite all URL
+      RewriteCond %{HTTP_HOST} ^(www\.)?project1\.
+
+    # Rewrite all URL to this folder
+      RewriteRule ^(.*)$ /app/pages/$1 [L]    
+</IfModule>
+
+<IfModule mod_rewrite.c>
+     RewriteEngine on
+     
+     # Rewrite just root domain
+     RewriteCond %{HTTP_HOST} project1\.id [NC]
+     RewriteCond %{REQUEST_URI} ^/$
+     RewriteRule ^(.*)$ /app/pages/$1 [L]     
+</IfModule>
+
+<IfModule mod_rewrite.c>     
+     RewriteEngine  on
+     # RewriteRule ^(.*)$ $1.php
+     
+     # RewriteEngine on
+
+     # Try to remove .php
+     # RewriteCond %{REQUEST_FILENAME} !-f
+     # RewriteRule ^([a-z]+)\/?$ $1.php [NC]
+     # RewriteRule ^([^\.]+)$ $1.php [NC,L]
+      RewriteCond %{REQUEST_FILENAME}.php -f
+      RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]   
+</IfModule>
