@@ -69,11 +69,7 @@ $kategori = $datakategori->show();
               <i class="ion ion-stats-bars"></i>
             </div>
             <a href="produk.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-          <div id="ajax">
-            <h1>AJAX</h1>            
-          </div>
-          <button type="button" onclick="showHint()">AJAX</button>
+          </div>          
         </div>
         <!-- ./col -->        
       </div>
@@ -85,17 +81,5 @@ $kategori = $datakategori->show();
   <?php include './assets/page/footer.php'; ?>
 </div>
   <?php include './assets/page/script.php'; ?>
-<script>
-  function showHint(){
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(){
-      if(this.readyState == 4 && this.status == 200){
-        alert("Berhasil");
-      }
-    };
-    xhttp.open("GET","coba.txt",true);
-    xhttp.send();
-  }
-</script>
 </body>
 </html>
